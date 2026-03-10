@@ -92,11 +92,10 @@ export const resumeData = {
 
   publications: [
     {
-      title:
-        "Enhancing Learning Through Summarization Using a Fine-Tuned T5 Model",
-      authors: "Ehsan, M., et al.",
+      title: "Real-Time Parking Space Detection and Restriction Zone Recognition Using YOLOv11 Instance Segmentation on Dashcam Footage: A Multi-Model Comparative Study",
+      authors: "Ehsan, M., Chen, RC.",
       year: "2026",
-      venue: "Lecture Notes in Computer Science (LNCS), vol 15914, pp. 269-278.",
+      venue: "IEEE Access. (Under Review).",
       type: "Journal",
     },
     {
@@ -105,6 +104,15 @@ export const resumeData = {
       authors: "Ehsan, M., Chen, RC.",
       year: "2026",
       venue: "IIHMSP 2025, Springer. (In Press).",
+      type: "Conference",
+    },
+    {
+      title:
+        "Enhancing Learning Through Summarization Using a Fine-Tuned T5 Model",
+      authors: "Ehsan, M., et al.",
+      year: "2025",
+      venue: "Lecture Notes in Computer Science (LNCS), vol 15914, pp. 269-278.",
+      doi: "10.1007/978-3-031-98197-5_29",
       type: "Conference",
     },
   ],
