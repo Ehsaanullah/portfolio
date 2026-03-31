@@ -135,6 +135,7 @@ export const resumeData = {
         "Real-time detection of open parking spaces in urban Taiwan using YOLOv8 segmentation on dashcam footage.",
         "Published research accepted at IIHMSP 2025, Springer.",
       ],
+      videoId: "ZY_0n1trSXs",
     },
     {
       title: "Prophecy – Decentralized Prediction Platform",
