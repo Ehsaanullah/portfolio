@@ -154,7 +154,7 @@ export const resumeData = {
         "Architected the agent's core identity and behavior through custom configuration files (AGENTS.md, SOUL.md, TOOLS.md, IDENTITY.md) within the OpenClaw framework.",
         "Trained the system on custom workflows enabling intelligent task execution across multiple domains with multi-language communication support.",
       ],
-      images: ["/clawbot-dashboard.png", "/clawbot-core-files.png"],
+      images: ["/clawbot-dashboard.jpeg", "/clawbot-core-files.jpeg"],
     },
   ],
 
