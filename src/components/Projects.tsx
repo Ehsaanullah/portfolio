@@ -1,10 +1,68 @@
 "use client";
-import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
-import { Code2, ExternalLink } from "lucide-react";
+import { useRef, useState } from "react";
+import { motion, useInView, AnimatePresence } from "framer-motion";
+import { Code2, ChevronLeft, ChevronRight } from "lucide-react";
 import { resumeData } from "@/data/resume";
 
 const { projects } = resumeData;
+
+function ImageGallery({ images }: { images: string[] }) {
+  const [current, setCurrent] = useState(0);
+
+  return (
+    <div className="mt-3 mb-3 relative rounded-xl overflow-hidden" style={{ aspectRatio: "16/9", background: "rgba(0,0,0,0.3)" }}>
+      <AnimatePresence mode="wait">
+        <motion.img
+          key={current}
+          src={images[current]}
+          alt={`Project screenshot ${current + 1}`}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.3 }}
+          style={{ width: "100%", height: "100%", objectFit: "cover" }}
+        />
+      </AnimatePresence>
+
+      {images.length > 1 && (
+        <>
+          <button
+            onClick={() => setCurrent((p) => (p - 1 + images.length) % images.length)}
+            className="absolute left-2 top-1/2 -translate-y-1/2 flex items-center justify-center rounded-full"
+            style={{ width: 28, height: 28, background: "rgba(0,0,0,0.6)", border: "1px solid rgba(255,255,255,0.15)", color: "#fff" }}
+          >
+            <ChevronLeft size={14} />
+          </button>
+          <button
+            onClick={() => setCurrent((p) => (p + 1) % images.length)}
+            className="absolute right-2 top-1/2 -translate-y-1/2 flex items-center justify-center rounded-full"
+            style={{ width: 28, height: 28, background: "rgba(0,0,0,0.6)", border: "1px solid rgba(255,255,255,0.15)", color: "#fff" }}
+          >
+            <ChevronRight size={14} />
+          </button>
+          <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1">
+            {images.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setCurrent(i)}
+                style={{
+                  width: i === current ? 16 : 6,
+                  height: 6,
+                  borderRadius: 999,
+                  background: i === current ? "#7C3AED" : "rgba(255,255,255,0.3)",
+                  transition: "all 0.3s",
+                  border: "none",
+                  cursor: "pointer",
+                  padding: 0,
+                }}
+              />
+            ))}
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
 
 export default function Projects() {
   const ref = useRef(null);
@@ -137,15 +195,21 @@ export default function Projects() {
                   </li>
                 ))}
               </ul>
+
+              {/* Image gallery */}
+              {"images" in proj && proj.images && (
+                <ImageGallery images={proj.images as string[]} />
+              )}
+
               {/* Video embed */}
-              {proj.videoId && (
+              {"videoId" in proj && proj.videoId && (
                 <div className="mt-3 mb-3">
                   <p style={{ fontSize: "0.75rem", color: "rgba(139,163,199,0.7)", marginBottom: "8px" }}>
                     Live inference — free, occupied & restricted zones via YOLOv11 instance segmentation
                   </p>
                   <div className="rounded-xl overflow-hidden" style={{ aspectRatio: "16/9" }}>
                     <iframe
-                      src={`https://www.youtube.com/embed/${proj.videoId}`}
+                      src={`https://www.youtube.com/embed/${proj.videoId as string}`}
                       title="Real-Time Parking Detection Demo"
                       allowFullScreen
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -154,6 +218,7 @@ export default function Projects() {
                   </div>
                 </div>
               )}
+
               {/* Stack tags */}
               <div className="flex flex-wrap gap-1.5 mt-auto">
                 {proj.stack.map((s) => (
