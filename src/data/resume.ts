@@ -145,6 +145,17 @@ export const resumeData = {
         "A blockchain-based decentralized prediction platform built as final year thesis.",
       ],
     },
+    {
+      title: "ClawBot — Personal AI Automation System",
+      context: "Personal Project",
+      stack: ["Python", "AI Agents", "RPA", "Automation", "LLM Integration"],
+      bullets: [
+        "Built and deployed a fully integrated local AI automation system capable of handling accounting, file management, email, social media, and report generation.",
+        "Architected the agent's core identity and behavior through custom configuration files (AGENTS.md, SOUL.md, TOOLS.md, IDENTITY.md) within the OpenClaw framework.",
+        "Trained the system on custom workflows enabling intelligent task execution across multiple domains with multi-language communication support.",
+      ],
+      images: ["/clawbot-dashboard.png", "/clawbot-core-files.png"],
+    },
   ],
 
   skills: {
