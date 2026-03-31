@@ -137,7 +137,23 @@ export default function Projects() {
                   </li>
                 ))}
               </ul>
-
+              {/* Video embed */}
+              {proj.videoId && (
+                <div className="mt-3 mb-3">
+                  <p style={{ fontSize: "0.75rem", color: "rgba(139,163,199,0.7)", marginBottom: "8px" }}>
+                    Live inference — free, occupied & restricted zones via YOLOv11 instance segmentation
+                  </p>
+                  <div className="rounded-xl overflow-hidden" style={{ aspectRatio: "16/9" }}>
+                    <iframe
+                      src={`https://www.youtube.com/embed/${proj.videoId}`}
+                      title="Real-Time Parking Detection Demo"
+                      allowFullScreen
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      style={{ width: "100%", height: "100%", border: "none" }}
+                    />
+                  </div>
+                </div>
+              )}
               {/* Stack tags */}
               <div className="flex flex-wrap gap-1.5 mt-auto">
                 {proj.stack.map((s) => (
